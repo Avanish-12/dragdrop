@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop Using Javascript-Easy Tutorials</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" >
+       
+       <div>
+        <div id="left" >
+            <!-- Items in left container are draggable/drop vice versa -->
+               <div class="list" draggable="true"  ><img src="image1.png">List Item1</div>
+               <div class="list" draggable="true" ><img src="image1.png">List Item2</div>
+
+               <div class="list" draggable="true" ><img src="image1.png">List Item3</div>
+
+               <div class="list" draggable="true" ><img src="image1.png">List Item4</div>
+               
+            
+        </div>
+       
+          
+            
+            
+           <p> <button onclick="reset1()">Reset_Left_Box</button></p>
+        </div>
+        
+       
+        
+
+   
+
+    <div>
+        <div id="right">
+             <!-- Items in left container are drop/drag, vice versa-->
+
+
+        </div>
+
+       
+            
+            <p><button onclick="reset2()">Reset_Right_Box</button></p>
+        </div>
+        
+        
+
+    
+</div>
+
+        
+
+    </div>
+
+    <script>
+         
+        let lists=document.getElementsByClassName("list");
+        let rightbox=document.getElementById("right");
+        let leftbox=document.getElementById("left");
+       
+        for(list of lists){
+            list.addEventListener("dragstart", function(e){
+ 
+            let selected=e.target;
+            rightbox.addEventListener("dragover", function(e){
+                   e.preventDefault();
+
+            });
+
+            // Append the dragged item to Right container
+            rightbox.addEventListener("drop", function(e){
+                rightbox.appendChild(selected);
+                
+                
+                selected=null;
+                // sucess message show
+                alert("Item dropped!");
+            });
+
+            leftbox.addEventListener("dragover", function(e){
+                   e.preventDefault();
+
+            });
+
+            // Append the dragged item to Left container
+            leftbox.addEventListener("drop", function(e){
+                leftbox.appendChild(selected);
+               
+                
+                selected=null;
+                alert("Item dropped!");
+            });
+
+            })
+        }
+
+        
+// remove all things from left container
+        function reset1() {
+      leftbox.innerHTML = `
+       
+      `;
+      leftbox.innerHTML = "";
+      
+    }
+ // remove all things from right container
+    function reset2() {
+      rightbox.innerHTML = `
+       
+      `;
+      rightbox.innerHTML = "";
+      
+    }
+
+   
+
+       
+    </script>
+
+
+</body>
+</html>
